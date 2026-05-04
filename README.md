@@ -1,57 +1,64 @@
-# ChatBot Projekt
+# ChatbotGPT 💬
 
-Dieses Projekt stellt einen einfachen Web-Chatbot bereit, der mit OpenAI's GPT-4-Modell kommuniziert. Du kannst dem Chatbot Fragen stellen, und er wird mit einer einfachen Antwort reagieren. Das Frontend ist in HTML und JavaScript geschrieben, und es nutzt die OpenAI API, um die Antworten zu generieren.
-
-## Voraussetzungen
-
-- Ein OpenAI API-Schlüssel, um Anfragen an das GPT-Modell zu stellen.
-- Ein Webbrowser, um das Projekt lokal auszuführen.
-
-## Projektstruktur
-
-- **index.html**: Das Frontend des Chatbots, das eine einfache Benutzeroberfläche bietet.
-- **script.js**: Die JavaScript-Datei, die für die Kommunikation mit der OpenAI API verantwortlich ist und die Nachrichten im Chatfenster darstellt.
-
-## Setup
-
-### 1. Erhalte deinen OpenAI API-Schlüssel
-
-Um mit dem Chatbot zu interagieren, benötigst du einen API-Schlüssel von OpenAI. Du kannst einen Schlüssel auf der [OpenAI API-Seite](https://platform.openai.com/account/api-keys) anfordern.
-
-### 2. Konfiguriere die API im Code
-
-Im **script.js**-Code findest du den Abschnitt, in dem der API-Schlüssel gesetzt ist:
-
-```javascript
-const apiKey = 'DEIN_API_SCHLÜSSEL';
-```
-
-Ersetze `'DEIN_API_SCHLÜSSEL'` mit deinem tatsächlichen API-Schlüssel.
-
-### 3. Öffne das Projekt im Browser
-
-- Lade die Dateien **index.html** und **script.js** auf deinen lokalen Rechner.
-- Öffne die **index.html**-Datei in deinem bevorzugten Webbrowser.
-
-## Funktionsweise
-
-1. Wenn du eine Nachricht in das Eingabefeld eingibst und den "Fragen"-Button klickst, wird die Nachricht an das JavaScript übergeben.
-2. Die Funktion `postChatMessage()` fügt die Nachricht im Chatverlauf hinzu und ruft dann die Funktion `askChatGPT()` auf.
-3. `askChatGPT()` sendet die Benutzeranfrage an die OpenAI API und wartet auf die Antwort.
-4. Sobald die Antwort von GPT-4 zurückkommt, wird sie im Chatverlauf angezeigt.
+A browser-based chatbot interface that communicates with OpenAI's GPT-4 model. Built with vanilla HTML and JavaScript — no frameworks, no build tools, runs directly in the browser.
 
 ## Features
 
-- **Einfache Benutzeroberfläche**: Du kannst Fragen stellen und sofort eine Antwort erhalten.
-- **Interaktive Kommunikation**: Das System beantwortet Fragen in einfachen und klaren Sätzen.
-- **Anpassbar**: Du kannst die Systemnachricht im API-Aufruf anpassen, um die Antworten des Chatbots zu beeinflussen.
+- 💬 **Real-time chat interface** — send messages and receive GPT-4 responses instantly
+- 🎨 **Clean frontend** — built with plain HTML & CSS, no dependencies
+- ⚙️ **Customizable system prompt** — adjust the chatbot's behavior and personality directly in the code
+- 🔌 **Direct API integration** — communicates with OpenAI's Chat Completions endpoint via `fetch`
 
-## Probleme und Lösungen
+## Tech Stack
 
-- **Fehler beim Laden der API-Antwort**: Wenn ein Fehler auftritt, wird eine Fehlermeldung im Browser angezeigt.
-- **API-Schlüssel Fehler**: Stelle sicher, dass der API-Schlüssel korrekt ist und du genügend API-Guthaben hast.
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=flat&logo=openai&logoColor=white)
 
-## Verbesserungsideen
+## Project Structure
 
-- **Benutzeroberfläche erweitern**: Du könntest das Design der Seite anpassen und mehr Interaktivität hinzufügen (z. B. Buttons oder Kategorien von Antworten).
-- **Sprachunterstützung**: Es könnte eine Funktion zur Unterstützung mehrerer Sprachen oder anderer Modelle von OpenAI hinzugefügt werden.
+```
+ChatbotGPT/
+└── chatbot-gpt/
+    ├── index.html    # Chat UI layout
+    └── script.js     # API communication & message rendering
+```
+
+## How It Works
+
+1. User types a message and clicks "Send"
+2. `postChatMessage()` adds the message to the chat history
+3. `askChatGPT()` sends the conversation to the OpenAI API
+4. The GPT-4 response is received and rendered in the chat window
+
+## Getting Started
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/vincentkoenig/ChatbotGPT.git
+cd ChatbotGPT/chatbot-gpt
+```
+
+**2. Add your OpenAI API key**
+
+Open `script.js` and replace the placeholder with your key:
+```javascript
+const apiKey = 'your-api-key-here';
+```
+> Get your API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+
+**3. Open in browser**
+
+Open `index.html` directly in any modern browser — no server needed.
+
+## Known Limitations
+
+- **API key is exposed in the frontend** — this is intentional for simplicity in this demo project. In a production environment, API calls should always be proxied through a backend server to keep the key secure.
+- No conversation memory between page reloads
+
+## What I Learned
+
+- Making asynchronous API calls with `fetch` and `async/await` in JavaScript
+- Handling JSON request/response structures for the OpenAI Chat Completions API
+- Dynamically updating the DOM to render a real-time chat interface
+- Understanding the role of system prompts in shaping AI behavior
